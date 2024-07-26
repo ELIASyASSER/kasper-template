@@ -469,9 +469,12 @@
     }
 
     let boxes = document.querySelectorAll(".stats .box div")
-    
-    boxes.forEach(box=>{
-        box.innerHTML = '0'
+    let stats = document.querySelector(".stats")
+    window.addEventListener("scroll",()=>{
+
+        if(window.scrollY >= stats.offsetTop){
+            boxes.forEach(box=>{
+                box.innerHTML = '0'
         increase()
         function increase() {
             let current = +box.innerHTML
@@ -481,14 +484,17 @@
             current = Math.ceil(current + inc)
             if(current<num){
                 box.innerHTML = current
-                setTimeout(increase,40)
+                setTimeout(increase,90)
             }else{
                 box.innerHTML = num
             }
         }
-
-
+        
+        
     })
+}
+})
+
     let skills = document.querySelector(".skills")
     let spans = document.querySelectorAll(".prog-holder .prog span")
     window.onscroll = function () {
